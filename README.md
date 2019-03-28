@@ -18,7 +18,9 @@ cf login -a https://api.run.pivotal.io
 Target your org / space. An empty space is recommended, to avoid naming collisions.
 
 ```bash
-cf target -o myorg -s myspace
+cf create-space spc1 -o allocation
+
+cf target -o allocation -s spc1
 ```
 
 Sign up for a cleardb instance.
@@ -30,13 +32,15 @@ cf create-service cleardb spark mysql
 Push the app. Its manifest assumes you called your ClearDB instance 'mysql'.
 
 ```bash
-cf push -n mysubdomain
+cf push -n mysubdomain4
 ```
 
 Export the test host
-
+wait and see long logs
+see the route
+http://mysubdomain4.cfapps.io/all
 ```bash
-export HOST=http://mysubdomain.cfapps.io
+export HOST=http://mysubdomain4.cfapps.io
 ```
 
 Now follow the [interaction instructions](#interaction-instructions).
